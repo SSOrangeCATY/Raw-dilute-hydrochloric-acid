@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "oratech",
+  "version": "${version}",
+
+  "name": "OrangeTech",
+  "description": "做自己想玩的 做自己想要的 做自己所憧憬的!",
+  "authors": [
+    "SSOrangeCATY"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/oratech/icon.png",
+  "accessWidener": "oratech.accesswidener",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.jumaoz.oratech.OraTech"
+    ],
+    "client": [
+      "com.jumaoz.oratech.OraTechClient"
+    ]
+  },
+  "mixins": [
+    "oraTech.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "1.19.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

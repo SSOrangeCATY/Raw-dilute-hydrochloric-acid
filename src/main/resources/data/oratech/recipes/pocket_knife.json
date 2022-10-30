@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " B ",
+    " M "
+  ],
+  "key": {
+	"#": {
+      "item": "oratech:steel_hammer"
+    },
+	"B": {
+      "item": "oratech:steel_plate"
+    },
+	"M": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "oratech:pocket_knife"
+  }
+}

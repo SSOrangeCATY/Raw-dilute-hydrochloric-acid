@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  O",
+    " O#",
+    "O  "
+  ],
+  "key": {
+    "O": {
+      "item": "oratech:steel_pole"
+    },
+	"#": {
+      "item": "oratech:steel_hammer"
+    }
+  },
+  "result": {
+    "item": "oratech:steel_wrench"
+  }
+}

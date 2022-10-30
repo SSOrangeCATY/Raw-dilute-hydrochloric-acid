@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,lit=false": { "model": "oratech:block/coke_oven" },
+    "facing=south,lit=false": { "model": "oratech:block/coke_oven", "y": 180 },
+    "facing=west,lit=false":  { "model": "oratech:block/coke_oven", "y": 270 },
+    "facing=east,lit=false":  { "model": "oratech:block/coke_oven", "y": 90 },
+    "facing=north,lit=true": { "model": "oratech:block/coke_oven_on" },
+    "facing=south,lit=true": { "model": "oratech:block/coke_oven_on", "y": 180 },
+    "facing=west,lit=true":  { "model": "oratech:block/coke_oven_on", "y": 270 },
+    "facing=east,lit=true":  { "model": "oratech:block/coke_oven_on", "y": 90 }
+  }
+}

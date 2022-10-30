@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "## ",
+    "##O",
+    "## "
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:stick"
+    },
+	"#": {
+	  "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "oratech:soft_hammer"
+  }
+}

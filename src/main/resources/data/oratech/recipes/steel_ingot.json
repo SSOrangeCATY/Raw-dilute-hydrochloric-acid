@@ -1,0 +1,19 @@
+{
+  "type": "oratech:earth_blast_furnace",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "oratech:coking_coal"
+    }
+  ],
+  "progress": 120,
+  "output": {
+    "item": "oratech:steel_ingot"
+  },
+  "output1": {
+    "item": "oratech:ashes",
+    "count": 4
+  }
+}

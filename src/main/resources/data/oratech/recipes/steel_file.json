@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "OG#",
+    " M "
+  ],
+  "key": {
+    "O": {
+      "item": "oratech:soft_hammer"
+    },
+	"#": {
+      "item": "oratech:steel_hammer"
+    },
+	"B": {
+      "item": "oratech:steel_plate"
+    },
+	"G": {
+      "item": "oratech:steel_pole"
+    },
+	"M": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "oratech:steel_file"
+  }
+}

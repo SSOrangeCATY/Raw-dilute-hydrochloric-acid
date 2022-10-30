@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " O ",
+    " O "
+  ],
+  "key": {
+    "O": {
+      "item": "oratech:steel_pole"
+    },
+    "#": {
+      "item": "oratech:steel_ingot"
+    }
+  },
+  "result": {
+    "item": "oratech:steel_shovel"
+  }
+}
