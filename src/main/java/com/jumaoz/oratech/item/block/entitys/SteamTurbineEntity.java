@@ -2,9 +2,9 @@ package com.jumaoz.oratech.item.block.entitys;
 
 import com.jumaoz.oratech.OraTech;
 import com.jumaoz.oratech.util.ImplementedInventory;
+import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -32,9 +32,15 @@ public class SteamTurbineEntity extends BlockEntity implements NamedScreenHandle
         if(world.isClient){
             return;
         }
-        if(world.isNight()){
+        if(world.isDay()){
             if(entity.orangePowerStorage.amount < entity.orangePowerStorage.capacity){
-            entity.orangePowerStorage.amount++;}
+            entity.orangePowerStorage.amount=entity.orangePowerStorage.amount+10;}
+        }
+    }
+    private static void extractEnergy(SteamTurbineEntity entity){
+        try(Transaction transaction = Transaction.openOuter()){
+            entity.orangePowerStorage.extract(32,transaction);
+            transaction.commit();
         }
     }
     protected void writeNbt(NbtCompound nbt){

@@ -91,7 +91,6 @@ public class EarthBlastFurnaceEntity extends BlockEntity implements NamedScreenH
         if(world.isClient()) {
             return;
         }
-        if (entity.getStack(4).getCount()<=60 && entity.getStack(3).getCount()<64){
           if(hasRecipes(entity)){
             if (hasFuel(entity)) {
                 entity.world.setBlockState(blockPos,blockState.with(Properties.LIT,true));
@@ -101,8 +100,7 @@ public class EarthBlastFurnaceEntity extends BlockEntity implements NamedScreenH
                 }
               } else {entity.setUnWork(blockPos,blockState);}
             } else {entity.setUnWork(blockPos,blockState);}
-        } else {entity.setUnWork(blockPos,blockState);}
-    }
+        }
     private void setUnWork(BlockPos blockPos,BlockState blockState) {
         this.resetProgress();
         this.resetFuelTime();
