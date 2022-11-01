@@ -41,16 +41,10 @@ public class OneVerAlloyFurnaceScreenHandler extends ScreenHandler {
         this.addSlot(new Slot(this.inventory,2,52,53){
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.getItem() == Items.COAL;
-            }
-        });
-        this.addSlot(new Slot(this.inventory,3,103,35){
-            @Override
-            public boolean canInsert(ItemStack stack) {
                 return false;
             }
         });
-        this.addSlot(new Slot(this.inventory,4,124,35){
+        this.addSlot(new Slot(this.inventory,3,103,35){
             @Override
             public boolean canInsert(ItemStack stack) {
                 return false;
