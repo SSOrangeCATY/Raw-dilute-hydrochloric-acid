@@ -2,6 +2,7 @@ package com.jumaoz.oratech.item.block.entitys;
 
 import com.jumaoz.oratech.OraTech;
 import com.jumaoz.oratech.screen.handler.EarthBlastFurnaceScreenHandler;
+import com.jumaoz.oratech.screen.handler.OneVerAlloyFurnaceScreenHandler;
 import com.jumaoz.oratech.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -101,10 +102,12 @@ public class OneVerAlloyFurnaceEntity extends BlockEntity implements NamedScreen
 
     protected void writeNbt(NbtCompound nbt){
         super.writeNbt(nbt);
+        nbt.putInt("Progress",progress);
         nbt.putLong("OrangePower",orangePowerStorage.amount);
     }
     public void readNbt(NbtCompound nbt){
         super.readNbt(nbt);
+        progress = nbt.getInt("Progress");
         orangePowerStorage.amount = nbt.getLong("OrangePower");
     }
 
@@ -121,6 +124,6 @@ public class OneVerAlloyFurnaceEntity extends BlockEntity implements NamedScreen
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new EarthBlastFurnaceScreenHandler(syncId,inv,this,this.propertyDelegate);
+        return new OneVerAlloyFurnaceScreenHandler(syncId,inv,this,this.propertyDelegate);
     }
 }

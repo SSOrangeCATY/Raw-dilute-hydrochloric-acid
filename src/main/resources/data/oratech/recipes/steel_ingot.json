@@ -10,7 +10,8 @@
   ],
   "progress": 120,
   "output": {
-    "item": "oratech:steel_ingot"
+    "item": "oratech:steel_ingot",
+    "count": 1
   },
   "output1": {
     "item": "oratech:ashes",

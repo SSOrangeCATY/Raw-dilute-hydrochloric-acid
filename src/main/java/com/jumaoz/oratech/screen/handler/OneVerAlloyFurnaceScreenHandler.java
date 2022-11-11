@@ -19,8 +19,8 @@ public class OneVerAlloyFurnaceScreenHandler extends ScreenHandler {
         this(synId, inventory, new SimpleInventory(4),new ArrayPropertyDelegate(4));
     }
     public OneVerAlloyFurnaceScreenHandler(int synId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate delegate){
-        super(OraTech.EARTH_BLAST_FURNACE_SCREEN_HANDLER_SCREEN_HANDLER, synId);
-        checkSize(inventory,5);
+        super(OraTech.ONE_VER_ALLOY_FURNACE_SCREEN_HANDLER, synId);
+        checkSize(inventory,4);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = delegate;

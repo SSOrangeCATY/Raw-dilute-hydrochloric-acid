@@ -31,7 +31,6 @@ public class EarthBlastFurnaceRecipe implements Recipe<SimpleInventory> {
         this.output1 = output1;
         this.progress = progress;
     }
-
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
         if(world.isClient){
@@ -95,7 +94,7 @@ public class EarthBlastFurnaceRecipe implements Recipe<SimpleInventory> {
         public static  final Type INSTANCE = new Type();
         public static final String ID = "earth_blast_furnace";
     }
-    public static class Serializer implements  RecipeSerializer<EarthBlastFurnaceRecipe>{
+    public static class Serializer implements RecipeSerializer<EarthBlastFurnaceRecipe>{
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "earth_blast_furnace";
 
@@ -113,7 +112,6 @@ public class EarthBlastFurnaceRecipe implements Recipe<SimpleInventory> {
             }
             return new EarthBlastFurnaceRecipe(id, output,output1,inputs,progress);
         }
-
         @Override
         public EarthBlastFurnaceRecipe read(Identifier id, PacketByteBuf buf) {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
@@ -127,7 +125,6 @@ public class EarthBlastFurnaceRecipe implements Recipe<SimpleInventory> {
             int progress = buf.readInt();
             return new EarthBlastFurnaceRecipe(id, output,output1,inputs,progress);
         }
-
         @Override
         public void write(PacketByteBuf buf, EarthBlastFurnaceRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
@@ -135,6 +132,8 @@ public class EarthBlastFurnaceRecipe implements Recipe<SimpleInventory> {
                 ing.write(buf);
             }
             buf.writeItemStack(recipe.getOutput());
+            buf.writeItemStack(recipe.getOutput1());
+            buf.writeInt(recipe.progress);
         }
     }
 }

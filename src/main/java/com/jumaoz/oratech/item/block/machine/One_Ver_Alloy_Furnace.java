@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class One_Ver_Alloy_Furnace  extends BlockWithEntity implements BlockEntityProvider {
-    protected One_Ver_Alloy_Furnace(Settings settings) {
+    public One_Ver_Alloy_Furnace(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
         setDefaultState(this.stateManager.getDefaultState().with(Properties.LIT, false));
@@ -75,6 +75,6 @@ public class One_Ver_Alloy_Furnace  extends BlockWithEntity implements BlockEnti
     }
 
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, OraTech.EARTH_BLAST_FURNACE_ENTITY,EarthBlastFurnaceEntity::tick);
+        return checkType(type, OraTech.ONE_VER_ALLOY_FURNACE_ENTITY,OneVerAlloyFurnaceEntity::tick);
     }
 }

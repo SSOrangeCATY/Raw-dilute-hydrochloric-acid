@@ -2,13 +2,8 @@ package com.jumaoz.oratech;
 
 import com.jumaoz.oratech.item.block.*;
 import com.jumaoz.oratech.item.block.entitys.*;
-import com.jumaoz.oratech.item.block.machine.Coke_Oven;
-import com.jumaoz.oratech.item.block.machine.Earth_Blast_Furnace;
-import com.jumaoz.oratech.item.block.machine.Steam_Turbine;
-import com.jumaoz.oratech.item.block.ores.Deepslate_Iridium_Ore;
-import com.jumaoz.oratech.item.block.ores.Deepslate_Tin_Ore;
-import com.jumaoz.oratech.item.block.ores.Iridium_Ore;
-import com.jumaoz.oratech.item.block.ores.Tin_Ore;
+import com.jumaoz.oratech.item.block.machine.*;
+import com.jumaoz.oratech.item.block.ores.*;
 import com.jumaoz.oratech.item.item.*;
 import com.jumaoz.oratech.item.tool.*;
 import com.jumaoz.oratech.item.tool.ToolMaterials.*;
@@ -52,6 +47,8 @@ public class OraTech implements ModInitializer {
 	//ScreenRegister
 	public static final ScreenHandlerType<EarthBlastFurnaceScreenHandler> EARTH_BLAST_FURNACE_SCREEN_HANDLER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(MOD_ID,"earth_blast_furnace"),EarthBlastFurnaceScreenHandler::new);
 	public static final ScreenHandlerType<CokeOvenScreenHandler> COKE_OVEN_SCREEN_HANDLER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(MOD_ID,"coke_oven"),CokeOvenScreenHandler::new);
+	public static final ScreenHandlerType<OneVerAlloyFurnaceScreenHandler> ONE_VER_ALLOY_FURNACE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(MOD_ID,"1v_alloy_furnace"),OneVerAlloyFurnaceScreenHandler::new);
+
 	public static final Item COKING_COAL = new Coking_Coal(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 	public static final Item STEEL_POLE = new Steel_Pole(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 	public static final Item STEEL_INGOT = new Steel_Ingot(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
@@ -97,7 +94,8 @@ public class OraTech implements ModInitializer {
 	public static BlockEntityType<SteelChestEntity> STEEL_CHEST_ENTITY;
 	public static BlockEntityType<EarthBlastFurnaceEntity> EARTH_BLAST_FURNACE_ENTITY;
 	public static BlockEntityType<CokeOvenEntity> COKE_OVEN_ENTITY;
-	public static BlockEntityType<SteamTurbineEntity> STEAM_TURBINE_ENTITY;
+	//public static BlockEntityType<SteamTurbineEntity> STEAM_TURBINE_ENTITY;
+	public static BlockEntityType<OneVerAlloyFurnaceEntity> ONE_VER_ALLOY_FURNACE_ENTITY;
 	// Block
 	public static final Block IRIDIUM_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool());
 	public static final Block BREAK_BLOCK = new BreakBlock(AbstractBlock.Settings.of(Material.STONE));
@@ -108,7 +106,8 @@ public class OraTech implements ModInitializer {
 	public static final Block DEEPSTALE_TIN_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
 	public static final Block TIN_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
 	public static final Block BRONZE_SHELL = new Block(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
-	public static final Block STEAM_TURBINE = new Steam_Turbine(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
+	//public static final Block STEAM_TURBINE = new Steam_Turbine(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
+	public static final Block ONE_VER_ALLOY_FURNACE = new One_Ver_Alloy_Furnace(FabricBlockSettings.of(Material.METAL).hardness(4.0f).requiresTool().nonOpaque().strength(3.5F));
 	static
 	{
 		((ItemAccessor) STEEL_HAMMER ).setRecipeRemainder(STEEL_HAMMER);
@@ -150,6 +149,8 @@ public class OraTech implements ModInitializer {
 				stacks.add(new ItemStack(EARTH_BLAST_FURNACE));
 				stacks.add(new ItemStack(COKE_OVEN));
 				stacks.add(new ItemStack(BRONZE_SHELL));
+				//stacks.add(new ItemStack(STEAM_TURBINE));
+				stacks.add(new ItemStack(ONE_VER_ALLOY_FURNACE));
 
 				// Block
 				stacks.add(new ItemStack(STEEL_CHEST));
@@ -227,16 +228,18 @@ public class OraTech implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "deepslate_tin_ore"), new Deepslate_Tin_Ore(DEEPSTALE_TIN_ORE, new Item.Settings()));
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "tin_ore"), new Tin_Ore(TIN_ORE, new Item.Settings()));
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bronze_shell"), new Bronze_Shell(BRONZE_SHELL, new Item.Settings()));
-		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "steam_turbine"), new Steam_Turbine_Item(STEAM_TURBINE, new Item.Settings()));
+		//Registry.register(Registry.ITEM, new Identifier(MOD_ID, "steam_turbine"), new Steam_Turbine_Item(STEAM_TURBINE, new Item.Settings()));
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "1v_alloy_furnace"), new One_Ver_Alloy_Furnace_Item(ONE_VER_ALLOY_FURNACE, new Item.Settings()));
 		// BlockEntity
-		STEAM_TURBINE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "steam_turbine"), FabricBlockEntityTypeBuilder.create(SteamTurbineEntity::new,STEAM_TURBINE).build(null));
-
+		//STEAM_TURBINE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "steam_turbine"), FabricBlockEntityTypeBuilder.create(SteamTurbineEntity::new,STEAM_TURBINE).build(null));
+		ONE_VER_ALLOY_FURNACE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "1v_alloy_furnace"), FabricBlockEntityTypeBuilder.create(OneVerAlloyFurnaceEntity::new,ONE_VER_ALLOY_FURNACE).build(null));
 		BREAK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "break_block"), FabricBlockEntityTypeBuilder.create(BreakEntity::new,BREAK_BLOCK).build(null));
 		STEEL_CHEST_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "steel_chest"), FabricBlockEntityTypeBuilder.create(SteelChestEntity::new,STEEL_CHEST).build(null));
 		EARTH_BLAST_FURNACE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "earth_blast_furnace"), FabricBlockEntityTypeBuilder.create(EarthBlastFurnaceEntity::new,EARTH_BLAST_FURNACE).build(null));
 		COKE_OVEN_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "coke_oven"), FabricBlockEntityTypeBuilder.create(CokeOvenEntity::new,COKE_OVEN).build(null));
 		// Block
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "iridium_ore"), IRIDIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "1v_alloy_furnace"), ONE_VER_ALLOY_FURNACE);
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "break_block"), BREAK_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "steel_chest"), STEEL_CHEST);
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "earth_blast_furnace"), EARTH_BLAST_FURNACE);
@@ -245,7 +248,7 @@ public class OraTech implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "deepslate_tin_ore"), DEEPSTALE_TIN_ORE);
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "deepslate_iridium_ore"), DEEPSTALTE_IRIDIUM_ORE);
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "tin_ore"), TIN_ORE);
-		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "steam_turbine"), STEAM_TURBINE);
+		//Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "steam_turbine"), STEAM_TURBINE);
 		ModConfiguredFeatures.registerConfiguredFeatures();
 		ModOreGeneration.generateOres();
 	}
