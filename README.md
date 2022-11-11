@@ -1,9 +1,5 @@
-# Fabric Example Mod
+# OraTech Fabric | 融合的橘子科技
 
-## Setup
+## 介绍
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+所见即是新 | README待完善
