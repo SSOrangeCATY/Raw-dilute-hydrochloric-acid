@@ -9,8 +9,11 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -23,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class Coke_Oven extends BlockWithEntity implements BlockEntityProvider{
+    public static final IntProperty FLUID_VALUE = IntProperty.of("fluid_value",0,10);
     public Coke_Oven(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
@@ -33,6 +37,7 @@ public class Coke_Oven extends BlockWithEntity implements BlockEntityProvider{
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        stateManager.add(FLUID_VALUE);
         stateManager.add(Properties.HORIZONTAL_FACING);
         stateManager.add(Properties.LIT);
     }
@@ -49,11 +54,20 @@ public class Coke_Oven extends BlockWithEntity implements BlockEntityProvider{
             return ActionResult.SUCCESS;
         }
         BlockEntity cokeOvenEntity = world.getBlockEntity(pos);
+            if (player.getMainHandStack().getItem() == Items.BUCKET) {
+                if (world.getBlockState(pos).get(FLUID_VALUE) >= 1) {
+                    world.setBlockState(pos, state.with(FLUID_VALUE, world.getBlockState(pos).get(FLUID_VALUE) - 1));
+                    player.getMainHandStack().setCount(player.getMainHandStack().getCount()-1);
+                    player.giveItemStack(new ItemStack(OraTech.CREOSOTE_OIL, 1));
+                    return ActionResult.CONSUME;
+                }
+            }
         if(cokeOvenEntity instanceof CokeOvenEntity){
             player.openHandledScreen((CokeOvenEntity) cokeOvenEntity);
         }
         return ActionResult.CONSUME;
     }
+
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.isOf(newState.getBlock())){

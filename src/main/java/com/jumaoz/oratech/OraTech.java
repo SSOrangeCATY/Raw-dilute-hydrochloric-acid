@@ -62,7 +62,7 @@ public class OraTech implements ModInitializer {
 	public static final Item BRONZE_PLATE = new Bronze_Plate(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 	public static final Item ORANGE = new Orange(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64).food(new FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build()));
 	public static final Item V1_MOTOR = new V1_Motor(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
-	public static final Item CREOSOTE_OIL = new Creosote_Oil(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item CREOSOTE_OIL = new Creosote_Oil(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(1));
 	public static final Item COPPER_COIL = new Copper_Coil(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 	public static final Item MAGNETIZED_STEEL_ROD = new Magnetized_Steel_Rod(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 

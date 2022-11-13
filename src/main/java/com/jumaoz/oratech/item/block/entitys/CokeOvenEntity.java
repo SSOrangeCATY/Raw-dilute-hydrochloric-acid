@@ -1,6 +1,7 @@
 package com.jumaoz.oratech.item.block.entitys;
 
 import com.jumaoz.oratech.OraTech;
+import com.jumaoz.oratech.item.block.machine.Coke_Oven;
 import com.jumaoz.oratech.screen.handler.CokeOvenScreenHandler;
 import com.jumaoz.oratech.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -18,6 +19,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
 
 
 public class CokeOvenEntity extends BlockEntity implements NamedScreenHandlerFactory , ImplementedInventory {
@@ -74,7 +76,6 @@ public class CokeOvenEntity extends BlockEntity implements NamedScreenHandlerFac
         nbt.putInt("coke_oven_progress", progress);
         nbt.putInt("coke_oven_fluid", fluid);
     }
-
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
@@ -86,6 +87,7 @@ public class CokeOvenEntity extends BlockEntity implements NamedScreenHandlerFac
         if (world.isClient()) {
             return;
         }
+        entity.fluid = entity.world.getBlockState(blockPos).get(Coke_Oven.FLUID_VALUE) * 1000;
         if (entity.getStack(1).getCount() <=  63 && entity.fluid <= entity.maxFluid) {
             if (hasFuel(entity)) {
                 entity.world.setBlockState(blockPos,blockState.with(Properties.LIT,true));
@@ -109,7 +111,7 @@ public class CokeOvenEntity extends BlockEntity implements NamedScreenHandlerFac
     }
 
     private void CraftingFluid() {
-        this.fluid = this.fluid+1000;
+        this.world.setBlockState(this.pos,this.getCachedState().with(Coke_Oven.FLUID_VALUE,this.world.getBlockState(pos).get(Coke_Oven.FLUID_VALUE)+1));
     }
 
     private static void craftItem(CokeOvenEntity entity) {
