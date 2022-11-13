@@ -1,15 +1,25 @@
 package com.jumaoz.oratech;
 
-import com.jumaoz.oratech.item.block.*;
+import com.jumaoz.oratech.item.block.BreakBlock;
+import com.jumaoz.oratech.item.block.Bronze_Shell;
+import com.jumaoz.oratech.item.block.Steel_Chest;
 import com.jumaoz.oratech.item.block.entitys.*;
-import com.jumaoz.oratech.item.block.machine.*;
-import com.jumaoz.oratech.item.block.ores.*;
+import com.jumaoz.oratech.item.block.machine.Coke_Oven;
+import com.jumaoz.oratech.item.block.machine.Earth_Blast_Furnace;
+import com.jumaoz.oratech.item.block.machine.One_Ver_Alloy_Furnace;
+import com.jumaoz.oratech.item.block.ores.Deepslate_Iridium_Ore;
+import com.jumaoz.oratech.item.block.ores.Deepslate_Tin_Ore;
+import com.jumaoz.oratech.item.block.ores.Iridium_Ore;
+import com.jumaoz.oratech.item.block.ores.Tin_Ore;
 import com.jumaoz.oratech.item.item.*;
 import com.jumaoz.oratech.item.tool.*;
-import com.jumaoz.oratech.item.tool.ToolMaterials.*;
+import com.jumaoz.oratech.item.tool.ToolMaterials.CraftTool;
+import com.jumaoz.oratech.item.tool.ToolMaterials.SteelToolMaterials;
 import com.jumaoz.oratech.mixin.ItemAccessor;
 import com.jumaoz.oratech.repice.type.EarthBlastFurnaceRecipe;
-import com.jumaoz.oratech.screen.handler.*;
+import com.jumaoz.oratech.screen.handler.CokeOvenScreenHandler;
+import com.jumaoz.oratech.screen.handler.EarthBlastFurnaceScreenHandler;
+import com.jumaoz.oratech.screen.handler.OneVerAlloyFurnaceScreenHandler;
 import com.jumaoz.oratech.world.feature.ModConfiguredFeatures;
 import com.jumaoz.oratech.world.gen.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -65,6 +75,11 @@ public class OraTech implements ModInitializer {
 	public static final Item CREOSOTE_OIL = new Creosote_Oil(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(1));
 	public static final Item COPPER_COIL = new Copper_Coil(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 	public static final Item MAGNETIZED_STEEL_ROD = new Magnetized_Steel_Rod(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item IMPURITY_SILICON = new Impurity_Silicon(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item QUARTZ_FLOUR = new Quartz_Flour(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item SILICON_INGOT = new Silicon_Ingot(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item SILVER_INGOT = new Silver_Ingot(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
+	public static final Item URANIUM_INGOT = new Uranium_Ingot(new FabricItemSettings().group(OraTech.OTHER_GROUP).maxCount(64));
 
 
 
@@ -132,6 +147,7 @@ public class OraTech implements ModInitializer {
 				stacks.add(new ItemStack(BRONZE_PLATE));
 				stacks.add(new ItemStack(COPPER_COIL));
 				stacks.add(new ItemStack(ASHES));
+				stacks.add(new ItemStack(QUARTZ_FLOUR));
 
 				// Ore/Ingot
 				stacks.add(new ItemStack(COKING_COAL));
@@ -140,6 +156,10 @@ public class OraTech implements ModInitializer {
 				stacks.add(new ItemStack(BRONZE_INGOT));
 				stacks.add(new ItemStack(GLITTERING_INGOT));
 				stacks.add(new ItemStack(STEEL_INGOT));
+				stacks.add(new ItemStack(IMPURITY_SILICON));
+				stacks.add(new ItemStack(SILICON_INGOT));
+				stacks.add(new ItemStack(SILVER_INGOT));
+				stacks.add(new ItemStack(URANIUM_INGOT));
 				stacks.add(new ItemStack(IRIDIUM_INGOT));
 				stacks.add(new ItemStack(IRIDIUM_ORE));
 				stacks.add(new ItemStack(DEEPSTALTE_IRIDIUM_ORE));
@@ -213,6 +233,11 @@ public class OraTech implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "steel_saw"), STEEL_SAW);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "pocket_knife"), POCKET_KNIFE);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "crowbar"), CROWBAR);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "impurity_silicon"), IMPURITY_SILICON);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "quartz_flour"), QUARTZ_FLOUR);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "silicon_ingot"), SILICON_INGOT);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "silver_ingot"), SILVER_INGOT);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "uranium_ingot"), URANIUM_INGOT);
 
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "v1_motor"), V1_MOTOR);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "creosote_oil"), CREOSOTE_OIL);
