@@ -1,12 +1,5 @@
 {
   "replace": false,
   "values": [
-    "oratech:iridium_ore",
-    "oratech:deepslate_iridium_ore",
-    "oratech:earth_blast_furnace",
-    "oratech:coke_oven",
-    "oratech:deepslate_tin_ore",
-    "oratech:bronze_shell",
-    "oratech:tin_ore"
   ]
 }

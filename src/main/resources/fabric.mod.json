@@ -1,13 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "oratech",
+  "id": "thaumcraft",
   "version": "${version}",
 
-  "name": "OrangeTech",
+  "name": "Thaumcraft",
   "description": "做自己想玩的 做自己想要的 做自己所憧憬的!",
   "authors": [
-    "SSOrangeCATY",
-    "混合科技团队"
+    "SSOrangeCATY"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -15,20 +14,19 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/oratech/icon.png",
-  "accessWidener": "oratech.accesswidener",
+  "icon": "assets/thaumcarft/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.jumaoz.oratech.OraTech"
+      "net.archasmiel.thaumcraft.Thaumcraft"
     ],
     "client": [
-      "com.jumaoz.oratech.OraTechClient"
+      "net.archasmiel.thaumcraft.ThaumcraftClient"
     ]
   },
   "mixins": [
-    "oraTech.mixins.json"
+    "thaumcraft.mixins.json"
   ],
 
   "depends": {
