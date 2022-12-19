@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "thaumcraft:arcane_workbench",
+    "thaumcraft:deconstruction_table",
+    "thaumcraft:table"
+  ]
+}

@@ -1,7 +1,9 @@
 package net.archasmiel.thaumcraft.item.item;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
+import net.archasmiel.thaumcraft.item.block.ModBlockItemGeneration;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -494,7 +496,6 @@ public class ModItemRegister{
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Thaumcraft.MOD_ID, name), item);
     }
-
     public static void registerModItems() {
         Thaumcraft.LOGGER.debug("Registering Mod Items for " + Thaumcraft.MOD_ID);
     }

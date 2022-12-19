@@ -1,5 +1,5 @@
 package net.archasmiel.thaumcraft.mixin;
-import  net.archasmiel.thaumcraft.Thaumcraft;
+import net.archasmiel.thaumcraft.Thaumcraft;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
