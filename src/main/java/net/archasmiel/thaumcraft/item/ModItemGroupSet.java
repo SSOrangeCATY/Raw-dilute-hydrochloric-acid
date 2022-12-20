@@ -1,6 +1,7 @@
 package net.archasmiel.thaumcraft.item;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
+import net.archasmiel.thaumcraft.item.block.ModBlockRegister;
 import net.archasmiel.thaumcraft.item.item.ModItemRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -13,6 +14,7 @@ public class ModItemGroupSet {
                 .icon(() -> new ItemStack(ModItemRegister.GOGGLESREVEALING))
                 .entries((enabledFeatures, entries, operatorEnabled) -> {
                     entries.add(ModItemRegister.TESTWAND);
+                    entries.add(ModBlockRegister.ARCANE_WORKBENCH);
                     entries.add(ModItemRegister.ALUMENTUM);
                     entries.add(ModItemRegister.AMBER);
                     entries.add(ModItemRegister.BATH_SALTS);

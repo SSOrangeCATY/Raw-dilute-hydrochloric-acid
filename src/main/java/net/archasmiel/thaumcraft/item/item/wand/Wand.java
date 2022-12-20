@@ -15,6 +15,7 @@ public class Wand extends BowItem {
     private String name;
     private String quality;
     NbtCompound nbt = new NbtCompound();
+    NbtCompound elements = new NbtCompound();
     int element = 0;
     int maxElement = 100;
     int maxFire = 100;
@@ -85,12 +86,12 @@ public class Wand extends BowItem {
         nbt.putInt("order",element);
         nbt.putInt("max_order",maxOrder);
     }
-    public void addWindElement(ItemStack stack) {if(stack.getNbt().getInt("wind")<maxWind){wind = stack.getNbt().getInt("wind") + 1;nbt.putInt("wind",wind);stack.setNbt(nbt);}}
-    public void addEarthElement(ItemStack stack) {if(stack.getNbt().getInt("earth")<maxEarth){earth = stack.getNbt().getInt("earth") + 1;nbt.putInt("earth",earth);stack.setNbt(nbt);}}
-    public void addFireElement(ItemStack stack) {if(stack.getNbt().getInt("fire")<maxFire){fire = stack.getNbt().getInt("fire") + 1;nbt.putInt("fire",fire);stack.setNbt(nbt);}}
-    public void addWaterElement(ItemStack stack) {if(stack.getNbt().getInt("water")<maxWater){water = stack.getNbt().getInt("water") + 1;nbt.putInt("water",water);stack.setNbt(nbt);}}
-    public void addOrderElement(ItemStack stack) {if(stack.getNbt().getInt("order")<maxOrder){order = stack.getNbt().getInt("order") + 1;nbt.putInt("order",order);stack.setNbt(nbt);}}
-    public void addChaosElement(ItemStack stack) {if(stack.getNbt().getInt("chaos")<maxChaos){chaos = stack.getNbt().getInt("chaos") + 1;nbt.putInt("chaos",chaos);stack.setNbt(nbt);}}
+    public void addWindElement(ItemStack stack) {if(stack.getNbt().getInt("wind")<maxWind){wind = stack.getNbt().getInt("wind") + 1;elements = stack.getNbt().copy();elements.putInt("wind",wind);stack.setNbt(elements);}}
+    public void addEarthElement(ItemStack stack) {if(stack.getNbt().getInt("earth")<maxEarth){earth = stack.getNbt().getInt("earth") + 1;elements = stack.getNbt().copy();elements.putInt("earth",earth);stack.setNbt(elements);}}
+    public void addFireElement(ItemStack stack) {if(stack.getNbt().getInt("fire")<maxFire){fire = stack.getNbt().getInt("fire") + 1;elements = stack.getNbt().copy();elements.putInt("fire",fire);stack.setNbt(elements);}}
+    public void addWaterElement(ItemStack stack) {if(stack.getNbt().getInt("water")<maxWater){water = stack.getNbt().getInt("water") + 1;elements = stack.getNbt().copy();elements.putInt("water",water);stack.setNbt(elements);}}
+    public void addOrderElement(ItemStack stack) {if(stack.getNbt().getInt("order")<maxOrder){order = stack.getNbt().getInt("order") + 1;elements = stack.getNbt().copy();elements.putInt("order",order);stack.setNbt(elements);}}
+    public void addChaosElement(ItemStack stack) {if(stack.getNbt().getInt("chaos")<maxChaos){chaos = stack.getNbt().getInt("chaos") + 1;elements = stack.getNbt().copy();elements.putInt("chaos",chaos);stack.setNbt(elements);}}
 
     public String ItemName() {
         return name;
@@ -121,9 +122,8 @@ public class Wand extends BowItem {
         tooltip.add(Text.translatable("item.thaumcraft." + ItemName() + ".tips"));
         if (stack.getNbt() == null) {
             setCustomElement();
-            stack.setNbt(nbt);
-        }
-            tooltip.set(3, Text.translatable(""+ stack.getNbt().getInt("wind")).formatted(Formatting.YELLOW)
+            stack.setNbt(nbt);}
+        tooltip.set(3, Text.translatable(""+ stack.getNbt().getInt("wind")).formatted(Formatting.YELLOW)
                     .append(Text.translatable(" | ").formatted(Formatting.WHITE))
                     .append(Text.translatable(""+ stack.getNbt().getInt("earth")).formatted(Formatting.DARK_GREEN)
                     .append(Text.translatable(" | ").formatted(Formatting.WHITE))
@@ -144,13 +144,12 @@ public class Wand extends BowItem {
         tick++;
         if (tick == 5){
             tick = 0;
-        //user.getBlockPos();
         addWindElement(stack);
-            addFireElement(stack);
-            addEarthElement(stack);
-            addWaterElement(stack);
-            addChaosElement(stack);
-            addOrderElement(stack);
+        addFireElement(stack);
+        addEarthElement(stack);
+        addWaterElement(stack);
+        addChaosElement(stack);
+        addOrderElement(stack);
         }
 
     }
