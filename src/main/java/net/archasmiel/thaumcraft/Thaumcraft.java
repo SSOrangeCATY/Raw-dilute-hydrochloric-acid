@@ -4,24 +4,11 @@ import net.archasmiel.thaumcraft.item.ModItemGroupSet;
 import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
 import net.archasmiel.thaumcraft.item.block.ModBlockItemRegister;
 import net.archasmiel.thaumcraft.item.block.ModBlockRegister;
-import net.archasmiel.thaumcraft.item.item.ModItemGeneration;
 import net.archasmiel.thaumcraft.item.item.ModItemRegister;
 import net.archasmiel.thaumcraft.screen.ModScreenHandlerRegister;
-import net.devtech.arrp.api.RuntimeResourcePack;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registry;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +18,6 @@ import java.util.function.ToIntFunction;
 public class Thaumcraft implements ModInitializer {
 	public static final String MOD_ID = "thaumcraft";
 	public static final Logger LOGGER = LoggerFactory.getLogger("Thaumcraft");
-	public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create("thaumcraft:resources");
 	private static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int litLevel) {
 		return (state) -> {
 			return (Boolean)state.get(Properties.LIT) ? litLevel : 0;
@@ -63,7 +49,7 @@ public class Thaumcraft implements ModInitializer {
 	}*/
 	@Override
 	public void onInitialize() {
-		LOGGER.info(Thaumcraft.MOD_ID+": Hello Minecraft,Mod now loading");
+		LOGGER.info(Thaumcraft.MOD_ID+": Hello Minecraft,Thaumcraft now loading");
 		ModItemRegister.registerModItems();
 		ModScreenHandlerRegister.registerScreen();
 		ModBlockEntityRegister.registerModBlockEntities();
