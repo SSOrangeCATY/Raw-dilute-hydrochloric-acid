@@ -16,10 +16,6 @@ public class ModItemGeneration extends Item {
     public ModItemGeneration(Settings settings) {
         super(settings);
     }
-    public ModItemGeneration(Settings settings,String name) {
-        super(settings);
-        this.name = name;
-    }
     public ModItemGeneration(Settings settings,String name,String quality) {
         super(settings);
         this.name = name;

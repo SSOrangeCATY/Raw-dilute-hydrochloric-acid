@@ -2,6 +2,7 @@ package net.archasmiel.thaumcraft.item.item;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
 import net.archasmiel.thaumcraft.item.block.ModBlockItemGeneration;
+import net.archasmiel.thaumcraft.item.item.wand.Wand;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -492,6 +493,9 @@ public class ModItemRegister{
             new ModItemGeneration(new FabricItemSettings().maxCount(64),"wand_rod_silverwood","item"));
     public static final Item WISPESSENCE = registerItem("wispessence",
             new ModItemGeneration(new FabricItemSettings().maxCount(64),"wispessence","item"));
+    public static final Item TESTWAND = registerItem("test_wand",
+            new Wand(new FabricItemSettings().maxCount(64),"test_wand","item",0,100));
+
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Thaumcraft.MOD_ID, name), item);

@@ -12,6 +12,7 @@ public class ModItemGroupSet {
         final ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier(Thaumcraft.MOD_ID, "item_group"))
                 .icon(() -> new ItemStack(ModItemRegister.GOGGLESREVEALING))
                 .entries((enabledFeatures, entries, operatorEnabled) -> {
+                    entries.add(ModItemRegister.TESTWAND);
                     entries.add(ModItemRegister.ALUMENTUM);
                     entries.add(ModItemRegister.AMBER);
                     entries.add(ModItemRegister.BATH_SALTS);
