@@ -14,6 +14,7 @@ public class ModItemGroupSet {
                 .icon(() -> new ItemStack(ModItemRegister.GOGGLESREVEALING))
                 .entries((enabledFeatures, entries, operatorEnabled) -> {
                     entries.add(ModItemRegister.TESTWAND);
+                    entries.add(ModBlockRegister.AURA_NODE);
                     entries.add(ModBlockRegister.ARCANE_WORKBENCH);
                     entries.add(ModItemRegister.ALUMENTUM);
                     entries.add(ModItemRegister.AMBER);
