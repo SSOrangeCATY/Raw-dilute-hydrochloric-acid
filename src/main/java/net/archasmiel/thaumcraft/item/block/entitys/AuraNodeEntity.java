@@ -23,7 +23,7 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
     static int water=0;
     static int order=0;
     static int chaos=0;
-    static int isWriteElements;
+    static int isWriteElements = 0;
     public AuraNodeEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityRegister.AURANODEENTITY, pos, state);
     }
@@ -114,12 +114,9 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
         super.writeNbt(nbt);
         if(checkElements(nbt)){
             setElements();
-            writeElementNbt(nbt);
-            invElements(nbt);
-        }else {
-            writeElementNbt(nbt);
-            invElements(nbt);
         }
+        writeElementNbt(nbt);
+        invElements(nbt);
     }
     public NbtCompound writeElementNbt(NbtCompound nbt){
         nbt.putInt("wind",wind);
@@ -146,8 +143,7 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
         count = chaos  / 10 % 10;
         if (count !=0) inv.set(5,new ItemStack(Items.GRAY_WOOL)).setCount(count);
     }
-    public static <E extends BlockEntity> void tick(World world, BlockPos blockPos, BlockState blockState, E e) {
-
+    public static <E extends BlockEntity> void tick(World world, BlockPos pos, BlockState state, E e) {
     }
     @Override
     public DefaultedList<ItemStack> getItems() {
