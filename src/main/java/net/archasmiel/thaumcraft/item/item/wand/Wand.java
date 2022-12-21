@@ -97,7 +97,6 @@ public class Wand extends BowItem {
     public String ItemQuality() {return quality;}
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-
     }
 
     @Override

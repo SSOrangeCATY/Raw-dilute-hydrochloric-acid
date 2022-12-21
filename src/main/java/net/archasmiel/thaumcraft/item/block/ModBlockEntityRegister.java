@@ -11,6 +11,8 @@ import net.minecraft.util.Identifier;
 public class ModBlockEntityRegister {
     public static BlockEntityType<Arcane_WorkbenchEntity> ARCANE_WORKBENCHENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Thaumcraft.MOD_ID, "arcane_workbench"),
             FabricBlockEntityTypeBuilder.create(Arcane_WorkbenchEntity::new,ModBlockRegister.ARCANE_WORKBENCH).build(null));
+    public static BlockEntityType<Arcane_WorkbenchEntity> AURANODEENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(Thaumcraft.MOD_ID, "aura_node"),
+            FabricBlockEntityTypeBuilder.create(Arcane_WorkbenchEntity::new,ModBlockRegister.ARCANE_WORKBENCH).build(null));
 
     public static void registerModBlockEntities() {
         Thaumcraft.LOGGER.debug("Registering Mod BlockEntities for " + Thaumcraft.MOD_ID);
