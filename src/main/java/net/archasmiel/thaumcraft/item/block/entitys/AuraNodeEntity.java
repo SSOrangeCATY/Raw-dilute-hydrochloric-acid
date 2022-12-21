@@ -26,7 +26,7 @@ public class AuraNodeEntity extends BlockEntity {
     }
     public void setElements(){
      if(world.getBiome(pos).matchesKey(BiomeKeys.PLAINS)) {
-         int random = Random.create().nextBetween(0,108);
+         int random = Random.create().nextBetween(0,4);
          int chance = 0;
          chance=(random/25)+1;
          for (int a = chance;a == 5;a++){
