@@ -1,4 +1,4 @@
-package net.archasmiel.thaumcraft.item.item;
+package net.archasmiel.thaumcraft.generation.item;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;

@@ -1,7 +1,6 @@
-package net.archasmiel.thaumcraft.item.block.entitys;
+package net.archasmiel.thaumcraft.generation.block.entitys;
 
-import net.archasmiel.thaumcraft.Thaumcraft;
-import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
+import net.archasmiel.thaumcraft.generation.block.ModBlockEntityRegister;
 import net.archasmiel.thaumcraft.screen.handler.Arcane_WorkbenchScreenHandler;
 import net.archasmiel.thaumcraft.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
@@ -12,7 +11,6 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;

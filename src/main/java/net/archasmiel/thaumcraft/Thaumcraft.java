@@ -1,10 +1,10 @@
 package net.archasmiel.thaumcraft;
 
-import net.archasmiel.thaumcraft.item.ModItemGroupSet;
-import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
-import net.archasmiel.thaumcraft.item.block.ModBlockItemRegister;
-import net.archasmiel.thaumcraft.item.block.ModBlockRegister;
-import net.archasmiel.thaumcraft.item.item.ModItemRegister;
+import net.archasmiel.thaumcraft.generation.ModItemGroupSet;
+import net.archasmiel.thaumcraft.generation.block.ModBlockEntityRegister;
+import net.archasmiel.thaumcraft.generation.block.ModBlockItemRegister;
+import net.archasmiel.thaumcraft.generation.block.ModBlockRegister;
+import net.archasmiel.thaumcraft.generation.item.ModItemRegister;
 import net.archasmiel.thaumcraft.screen.ModScreenHandlerRegister;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.BlockState;

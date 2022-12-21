@@ -1,7 +1,6 @@
-package net.archasmiel.thaumcraft.item.item.wand;
+package net.archasmiel.thaumcraft.generation.item.wand;
 
-import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
-import net.archasmiel.thaumcraft.item.block.ModBlockRegister;
+import net.archasmiel.thaumcraft.generation.block.ModBlockRegister;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;

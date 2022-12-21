@@ -1,8 +1,8 @@
-package net.archasmiel.thaumcraft.item.block;
+package net.archasmiel.thaumcraft.generation.block;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
-import net.archasmiel.thaumcraft.item.block.entitys.Arcane_WorkbenchEntity;
-import net.archasmiel.thaumcraft.item.block.entitys.AuraNodeEntity;
+import net.archasmiel.thaumcraft.generation.block.entitys.Arcane_WorkbenchEntity;
+import net.archasmiel.thaumcraft.generation.block.entitys.AuraNodeEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

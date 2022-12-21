@@ -1,15 +1,16 @@
-package net.archasmiel.thaumcraft.item.block.entityBlock;
+package net.archasmiel.thaumcraft.generation.block.entityBlock;
 
-import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
-import net.archasmiel.thaumcraft.item.block.entitys.AuraNodeEntity;
-import net.archasmiel.thaumcraft.item.item.ModItemRegister;
-import net.archasmiel.thaumcraft.item.item.wand.Wand;
+import net.archasmiel.thaumcraft.generation.block.ModBlockEntityRegister;
+import net.archasmiel.thaumcraft.generation.block.entitys.AuraNodeEntity;
+import net.archasmiel.thaumcraft.generation.item.ModItemRegister;
+import net.archasmiel.thaumcraft.generation.item.wand.Wand;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -41,6 +42,11 @@ public class AuraNode extends BlockWithEntity implements BlockEntityProvider {
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new AuraNodeEntity(pos,state);
     }
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if(((AuraNodeEntity)world.getBlockEntity(pos)).checkElements()){
+            ((AuraNodeEntity)world.getBlockEntity(pos)).setElements();
+        }
+    }
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient){
             return ActionResult.FAIL;
@@ -62,12 +68,12 @@ public class AuraNode extends BlockWithEntity implements BlockEntityProvider {
     }
     public void setElements(PlayerEntity player,NbtCompound nbt,World world, BlockPos pos){
 
-        if(wind !=0) {if(Wand.addWindElement(player.getMainHandStack(),1))wind = wind-1;}
-        else if(earth !=0) {if(Wand.addEarthElement(player.getMainHandStack(),1))earth = earth-1;}
-        else if(fire !=0) {if(Wand.addFireElement(player.getMainHandStack(),1))fire = fire-1;}
-        else if(water !=0) {if(Wand.addWaterElement(player.getMainHandStack(),1))water = water-1;}
-        else if(order !=0) {if(Wand.addOrderElement(player.getMainHandStack(),1))order = order-1;}
-        else if(chaos !=0) {if(Wand.addChaosElement(player.getMainHandStack(),1))chaos = chaos-1;}
+        if(wind !=0 && Wand.addWindElement(player.getMainHandStack(),1)) wind = wind-1;
+        else if(earth !=0 && Wand.addEarthElement(player.getMainHandStack(),1)) earth = earth-1;
+        else if(fire !=0 && Wand.addFireElement(player.getMainHandStack(),1)) fire = fire-1;
+        else if(water !=0 && Wand.addWaterElement(player.getMainHandStack(),1)) water = water-1;
+        else if(order !=0 && Wand.addOrderElement(player.getMainHandStack(),1)) order = order-1;
+        else if(chaos !=0 && Wand.addChaosElement(player.getMainHandStack(),1)) chaos = chaos-1;
 
         ModBlockEntityRegister.AURANODEENTITY.get(world,pos).readElements(writeElementNbt(nbt));
     }

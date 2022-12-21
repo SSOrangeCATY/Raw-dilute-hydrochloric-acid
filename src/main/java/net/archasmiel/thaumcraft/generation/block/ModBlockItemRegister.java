@@ -1,4 +1,4 @@
-package net.archasmiel.thaumcraft.item.block;
+package net.archasmiel.thaumcraft.generation.block;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
 

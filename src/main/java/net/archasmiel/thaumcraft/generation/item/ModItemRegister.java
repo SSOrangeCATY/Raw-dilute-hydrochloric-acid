@@ -1,10 +1,8 @@
-package net.archasmiel.thaumcraft.item.item;
+package net.archasmiel.thaumcraft.generation.item;
 
 import net.archasmiel.thaumcraft.Thaumcraft;
-import net.archasmiel.thaumcraft.item.block.ModBlockItemGeneration;
-import net.archasmiel.thaumcraft.item.item.wand.Wand;
+import net.archasmiel.thaumcraft.generation.item.wand.Wand;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

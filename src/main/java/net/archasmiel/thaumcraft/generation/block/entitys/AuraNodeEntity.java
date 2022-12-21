@@ -1,7 +1,6 @@
-package net.archasmiel.thaumcraft.item.block.entitys;
+package net.archasmiel.thaumcraft.generation.block.entitys;
 
-import net.archasmiel.thaumcraft.item.block.ModBlockEntityRegister;
-import net.archasmiel.thaumcraft.util.Elements;
+import net.archasmiel.thaumcraft.generation.block.ModBlockEntityRegister;
 import net.archasmiel.thaumcraft.util.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -17,16 +16,17 @@ import net.minecraft.world.biome.BiomeKeys;
 
 public class AuraNodeEntity extends BlockEntity implements ImplementedInventory {
     private DefaultedList<ItemStack> inv = DefaultedList.ofSize(6,ItemStack.EMPTY);
-    static int wind=0;
-    static int earth=0;
-    static int fire=0;
-    static int water=0;
-    static int order=0;
-    static int chaos=0;
-    static int isWriteElements = 0;
+    int wind=0;
+    int earth=0;
+    int fire=0;
+    int water=0;
+    int order=0;
+    int chaos=0;
+    int isWriteElements = 0;
     public AuraNodeEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityRegister.AURANODEENTITY, pos, state);
     }
+
     public void setElements(){
         if (isNearLava(world,pos)|| world.getBiome(pos).matchesKey(BiomeKeys.DESERT) || world.getBiome(pos).matchesKey(BiomeKeys.SAVANNA) ||world.getBiome(pos).matchesKey(BiomeKeys.SAVANNA_PLATEAU)) {
             fire += Random.create().nextBetween(36, 85);
@@ -34,11 +34,11 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
         }
         else if(world.getBiome(pos).matchesKey(BiomeKeys.PLAINS)|| world.getBiome(pos).matchesKey(BiomeKeys.STONY_PEAKS)) {
              wind += Random.create().nextBetween(36, 85);
-         setOtherElements();
+             setOtherElements();
          }else if (world.getBiome(pos).matchesKey(BiomeKeys.OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.DEEP_OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.DEEP_COLD_OCEAN)||
-             world.getBiome(pos).matchesKey(BiomeKeys.DEEP_FROZEN_OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.WARM_OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.LUKEWARM_OCEAN)){
-         water += Random.create().nextBetween(36, 85);
-         setOtherElements();
+                world.getBiome(pos).matchesKey(BiomeKeys.DEEP_FROZEN_OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.WARM_OCEAN)|| world.getBiome(pos).matchesKey(BiomeKeys.LUKEWARM_OCEAN)){
+            water += Random.create().nextBetween(36, 85);
+            setOtherElements();
      } else if (world.getBiome(pos).matchesKey(BiomeKeys.SNOWY_BEACH)||world.getBiome(pos).matchesKey(BiomeKeys.SNOWY_PLAINS)||
                 world.getBiome(pos).matchesKey(BiomeKeys.SNOWY_SLOPES)||world.getBiome(pos).matchesKey(BiomeKeys.SNOWY_TAIGA) ||
                 world.getBiome(pos).matchesKey(BiomeKeys.FROZEN_PEAKS) || world.getBiome(pos).matchesKey(BiomeKeys.FROZEN_RIVER)||world.getBiome(pos).matchesKey(BiomeKeys.FROZEN_OCEAN)) {
@@ -52,7 +52,7 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
             setOtherElements();
         }
         isWriteElements = 1;
-
+        invElements();
     }
     public boolean isNearLava(World world,BlockPos pos){
         // broken
@@ -71,14 +71,14 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
     }
      public void setOtherElements() {
          int chance = Random.create().nextBetween(0, 100);
-         if(chance<=25){chance = 0;}
-          else if (chance<= 50) chance = 1;
-          else if (chance<= 70) chance = 2;
-          else if (chance<=85) chance = 3;
-          else if (chance<=95) chance = 4;
-          else if (chance <=100) chance = 5;
-
-         for (int a = chance; a > 0; a--) {
+         int finalChance = 0;
+         if(chance<=45){finalChance = 0;}
+          else if (chance<= 60) finalChance = 1;
+          else if (chance<= 75) finalChance = 2;
+          else if (chance<=85) finalChance = 3;
+          else if (chance<=95) finalChance = 4;
+          else if (chance <=100) finalChance = 5;
+         for (int a = finalChance; a > 0; a = a-1) {
              int random = Random.create().nextBetween(1, 6);
              int elementRandom = Random.create().nextBetween(3, 25);
              switch (random) {
@@ -91,14 +91,13 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
              }
          }
      }
-    public boolean checkElements(NbtCompound nbt){
+
+    public boolean checkElements(){
         return isWriteElements == 0;
     }
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        readElements(nbt);
-        invElements(nbt);
     }
     public void readElements(NbtCompound nbt){
         wind = nbt.getInt("wind");
@@ -112,11 +111,6 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        if(checkElements(nbt)){
-            setElements();
-        }
-        writeElementNbt(nbt);
-        invElements(nbt);
     }
     public NbtCompound writeElementNbt(NbtCompound nbt){
         nbt.putInt("wind",wind);
@@ -128,8 +122,7 @@ public class AuraNodeEntity extends BlockEntity implements ImplementedInventory 
         nbt.putInt("isWriteElements",isWriteElements);
         return nbt;
     }
-    public void invElements(NbtCompound nbt){
-        readElements(nbt);
+    public void invElements(){
         int count = wind  / 10 % 10;
         if (count !=0) inv.set(0,new ItemStack(Items.YELLOW_WOOL)).setCount(count);
         count = earth  / 10 % 10;
