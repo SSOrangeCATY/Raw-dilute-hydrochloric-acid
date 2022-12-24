@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.0-SNAPSHOT'
+	id 'fabric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -10,7 +10,7 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 loom {
-	accessWidenerPath = file("src/main/resources/thaumcraft.accesswidener")
+	accessWidenerPath = file("src/main/resources/hydrochloric.accesswidener")
 }
 
 repositories {

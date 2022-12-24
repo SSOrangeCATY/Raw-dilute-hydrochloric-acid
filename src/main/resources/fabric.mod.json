@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "thaumcraft",
+  "id": "hydrochloric",
   "version": "${version}",
 
-  "name": "Thaumcraft",
-  "description": "做自己想玩的 做自己想要的 做自己所憧憬的!",
+  "name": "Hydrochloric",
+  "description": "Demo",
   "authors": [
     "SSOrangeCATY"
   ],
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.archasmiel.thaumcraft.Thaumcraft"
+      "net.ssorangecaty.hydrochloric.Mod"
     ],
     "client": [
-      "net.archasmiel.thaumcraft.ThaumcraftClient"
+      "net.ssorangecaty.hydrochloric.ModClient"
     ]
   },
   "mixins": [
-    "thaumcraft.mixins.json"
+    "hydrochloric.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric-api": "*",
-    "minecraft": "1.19.x",
+    "minecraft": ">=1.19.3",
     "java": ">=17"
   },
   "suggests": {
