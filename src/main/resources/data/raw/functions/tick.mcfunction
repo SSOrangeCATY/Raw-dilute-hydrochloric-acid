@@ -1,0 +1,2 @@
+execute unless entity @e[tag=gamecore] run execute unless entity @a[scores={installCheck=1..}] run scoreboard objectives add installCheck dummy
+execute unless entity @e[tag=gamecore] run execute unless entity @a[scores={installCheck=1..}] run function raw:scoreboard/installtips

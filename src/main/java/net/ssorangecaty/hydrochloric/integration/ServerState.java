@@ -1,5 +1,9 @@
 package net.ssorangecaty.hydrochloric.integration;
 
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementCriterion;
+import net.minecraft.advancement.AdvancementFrame;
+import net.minecraft.advancement.AdvancementManager;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;

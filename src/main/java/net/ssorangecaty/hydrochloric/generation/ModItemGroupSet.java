@@ -11,7 +11,7 @@ public class ModItemGroupSet {
     public static void createItemGroup(){
         final ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier(Mod.MOD_ID, "item_group"))
                 .icon(() -> new ItemStack(Items.DIAMOND))
-                .entries((enabledFeatures, entries, operatorEnabled) -> {
+                .entries((enabledFeatures, entries)-> {
                     entries.add(Items.DIAMOND);
                 })
                 .build();

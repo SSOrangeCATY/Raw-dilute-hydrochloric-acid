@@ -4,8 +4,11 @@
   "package": "net.ssorangecaty.hydrochloric.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "FoodItemMixin",
     "HudInGameMixin",
+    "HungerManagerMixin",
     "ItemAccessor",
+    "ModEntityGameDataSavingServerMixin",
     "SycTickMixin"
   ],
   "client": [
