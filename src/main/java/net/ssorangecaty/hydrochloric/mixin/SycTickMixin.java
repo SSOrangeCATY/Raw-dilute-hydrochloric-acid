@@ -15,7 +15,7 @@ import java.util.function.BooleanSupplier;
 public abstract class SycTickMixin {
     @Shadow public abstract ServerWorld getOverworld();
     @Inject(at = @At("HEAD"), method = "tick")
-    private void SycRealTime(BooleanSupplier shouldKeepTicking, CallbackInfo ci){
+    private void sycRealTime(BooleanSupplier shouldKeepTicking, CallbackInfo ci){
         Calendar c = Calendar.getInstance();
         long hour = 18000 + c.get(Calendar.HOUR_OF_DAY)*1000;
         long minute = (long) (c.get(Calendar.MINUTE)*16.67);

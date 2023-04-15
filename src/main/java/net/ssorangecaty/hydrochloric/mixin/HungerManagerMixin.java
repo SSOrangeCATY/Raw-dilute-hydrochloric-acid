@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public abstract class HungerManagerMixin {
     @Shadow private int foodTickTimer;
     @Shadow private int foodLevel;
-    private int loopCount = 0;
+    private int loopCount;
     private int modTick;
     private int hunger_;
 
@@ -52,7 +52,7 @@ public abstract class HungerManagerMixin {
             }
             if (--loopCount > 0) {
                 player.heal(0.1F);
-                if(loopCount > 30){
+                if(loopCount > 20){
                     player.heal(0.5F);
                     loopCount -= 5;
                 }
@@ -62,8 +62,8 @@ public abstract class HungerManagerMixin {
                 ((EntityGameDataSaver)player).getGameInfo().putInt("hunger",0);
                 healCheck = false;
             }
-            if(hungerLevel == 4){
-                player.damage(player.getDamageSources().starve(),0.1F);
+            if (hungerLevel == 4){
+                player.damage(player.getDamageSources().starve(),1F);
             }
             modTick = 0;
         }
@@ -80,7 +80,7 @@ public abstract class HungerManagerMixin {
             player.sendMessage(Text.literal("饥肠辘辘！").formatted(Formatting.DARK_RED));
             ((EntityGameDataSaver)player).getGameInfo().putInt("hungerLevel",4);
         }
-        if(foodLevel != 4){
+        if(foodLevel != 4 && !player.isCreative()){
             ((EntityGameDataSaver) player).getGameInfo().putInt("foodTickTimer",++foodTickTimer);
         }
     }

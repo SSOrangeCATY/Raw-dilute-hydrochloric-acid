@@ -6,13 +6,14 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.ssorangecaty.hydrochloric.generation.item.ModItemRegister;
 
 public class ModItemGroupSet {
     public static void createItemGroup(){
         final ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier(Mod.MOD_ID, "item_group"))
                 .icon(() -> new ItemStack(Items.DIAMOND))
                 .entries((enabledFeatures, entries)-> {
-                    entries.add(Items.DIAMOND);
+                    entries.add(ModItemRegister.INES);
                 })
                 .build();
     }

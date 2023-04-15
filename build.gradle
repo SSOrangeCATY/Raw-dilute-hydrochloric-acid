@@ -39,6 +39,7 @@ repositories {
 			includeGroup "curse.maven"
 		}
 	}
+	maven { url 'https://jitpack.io' }
 	maven { url "https://maven.shedaniel.me" }
 	maven { url "https://dvs1.progwml6.com/files/maven/"}
 	maven { url "https://modmaven.dev"}
@@ -52,6 +53,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	include modImplementation("com.github.0x3C50:Renderer:master-SNAPSHOT")
 }
 
 	tasks.withType(JavaCompile).configureEach {

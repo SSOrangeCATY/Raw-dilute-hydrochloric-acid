@@ -32,7 +32,7 @@ public class ModItemGeneration extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(Text.translatable(""));
-        tooltip.add(Text.translatable("item.thaumcraft.quality."+ItemQuality()).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.thaumcraft."+ItemName()+".tips"));
+        tooltip.add(Text.translatable("item.hy.ui."+ItemQuality()).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("item.hy."+ItemName()+".tips"));
     }
 }

@@ -2,19 +2,11 @@ package net.ssorangecaty.hydrochloric.generation.command;
 
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.advancement.Advancement;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.command.AdvancementCommand;
+
 import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.FillCommand;
-import net.minecraft.server.command.WorldBorderCommand;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.command.StopSoundCommand;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.GameRules;
-import net.ssorangecaty.hydrochloric.integration.ServerState;
 import net.ssorangecaty.hydrochloric.util.EntityGameDataSaver;
 import net.ssorangecaty.hydrochloric.util.HungerData;
 

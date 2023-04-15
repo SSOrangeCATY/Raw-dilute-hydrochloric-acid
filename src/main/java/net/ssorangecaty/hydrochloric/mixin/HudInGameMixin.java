@@ -11,13 +11,10 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
-import net.ssorangecaty.hydrochloric.Mod;
-import net.ssorangecaty.hydrochloric.util.EntityGameDataSaver;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -25,7 +22,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 
 @Mixin(InGameHud.class)
 public abstract class HudInGameMixin extends DrawableHelper {
@@ -65,6 +61,8 @@ public abstract class HudInGameMixin extends DrawableHelper {
     private void render(MatrixStack matrices, float tickDelta, CallbackInfo ci){
         this.getTextRenderer().drawWithShadow(matrices, Text.literal("Demo Version"),5,5,0x00FF7F);
         // this.getTextRenderer().drawWithShadow(matrices, Text.literal(Mod.VERSION),5,15,0x00FFFF);
+    }
+    private void musicRender(MatrixStack matrices){
     }
     /**
      * @author
