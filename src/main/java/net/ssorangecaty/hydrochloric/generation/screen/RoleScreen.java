@@ -62,12 +62,21 @@ public class RoleScreen extends HandledScreen<RoleScreenHandler>{
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
     }
     protected void drawRoleImage(MatrixStack matrices){
-        RenderSystem.setShaderTexture(0,role.image);
-        int x = 0;
-        float imageHeight = (float) ((float) this.height / 1.5);
-        float imageWidth = this.width;
-        int size = (int) (this.height * 2.5);
-        drawTexture(matrices, x, 0, 95, imageHeight, (int) imageWidth, this.height, size, size);
+        if(role.quality > 3){
+            RenderSystem.setShaderTexture(0,role.image);
+            int x = 0;
+            float imageHeight = (float) ((float) this.height / 1.5);
+            float imageWidth = this.width;
+            int size = (int) (this.height * 2.5);
+            drawTexture(matrices, x, 0, 95, imageHeight, (int) imageWidth, this.height, size, size);
+        }else{
+            RenderSystem.setShaderTexture(0,role.image);
+            int x = this.width/2 - 50;
+            float imageHeight = 0;
+            float imageWidth = this.width;
+            int size = (int) (this.height * 1.5);
+            drawTexture(matrices, x, 0, 95, imageHeight, (int) imageWidth, this.height, size, size);
+        }
     }
     protected void drawTextElements(MatrixStack matrices){
         float tHeight = (float) (this.height- (float) this.height /3.75);
@@ -99,7 +108,7 @@ public class RoleScreen extends HandledScreen<RoleScreenHandler>{
             matrices.translate(k, tHeight, 0);
             matrices.multiply(quaternion);
             matrices.translate(-k, -tHeight, 0);
-            this.fontRendererE.drawString(matrices,"★",k,tHeight,1.0f, 1.0f, 1.0f, 1.0f);
+            this.fontRendererE.drawString(matrices,"★",k,tHeight,0.5f, 0.5f, 0.5f, 1.0f);
             matrices.pop();
         }
 

@@ -4,13 +4,13 @@
   "package": "net.ssorangecaty.hydrochloric.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "EntityMixin",
     "FoodItemMixin",
     "HudInGameMixin",
-    "HungerManagerMixin",
     "ItemAccessor",
+    "LivingEntityMixin",
     "ModEntityGameDataSavingServerMixin",
-    "EntityMixin",
-    "SycTickMixin"
+    "SyncTickMixin"
   ],
   "client": [
     "TitleScreenMixin"
