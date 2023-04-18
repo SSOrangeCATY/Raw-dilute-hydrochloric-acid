@@ -63,11 +63,10 @@ public abstract class HudInGameMixin extends DrawableHelper {
         // this.getTextRenderer().drawWithShadow(matrices, Text.literal(Mod.VERSION),5,15,0x00FFFF);
     }
     private void musicRender(MatrixStack matrices){
-    }
-    /**
+    }/**
      * @author
      * @reason
-     */
+     *//*
     @Overwrite
     private void renderStatusBars(MatrixStack matrices) {
         int ac;
@@ -176,7 +175,7 @@ public abstract class HudInGameMixin extends DrawableHelper {
     /**
      * @author
      * @reason
-     */
+     *//*
     @Overwrite
     public void renderExperienceBar(MatrixStack matrices, int x) {
         this.renderHealthBar(matrices,x);
@@ -208,6 +207,5 @@ public abstract class HudInGameMixin extends DrawableHelper {
             this.getTextRenderer().draw(matrices, string, (float)k, (float)l, 8453920);
             this.client.getProfiler().pop();
         }
-
-    }
+*/
 }

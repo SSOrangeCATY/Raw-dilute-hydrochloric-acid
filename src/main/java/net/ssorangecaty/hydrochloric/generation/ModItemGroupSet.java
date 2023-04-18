@@ -14,6 +14,13 @@ public class ModItemGroupSet {
                 .icon(() -> new ItemStack(Items.DIAMOND))
                 .entries((enabledFeatures, entries)-> {
                     entries.add(ModItemRegister.INES);
+                    entries.add(ModItemRegister.AMIYA);
+                    entries.add(ModItemRegister.KKDY);
+
+
+                    entries.add(ModItemRegister.ORIGIN_STONE);
+                    entries.add(ModItemRegister.LONGMEN_COIN);
+                    entries.add(ModItemRegister.SYNTHETIC_JADE);
                 })
                 .build();
     }

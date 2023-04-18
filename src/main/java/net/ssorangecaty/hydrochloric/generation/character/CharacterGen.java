@@ -35,6 +35,7 @@ public class CharacterGen extends Item implements NamedScreenHandlerFactory {
     public int skillDuration = 12*20;
     public int triggerTime = 200;
     public boolean auto = false;
+    public boolean attackTrigger = false;
     public int maxChargingTimes = 1;
     public int quality;
     public String simpleSkillInfo = "技能介绍:如果你看到这条文字代表没有写";
@@ -52,6 +53,12 @@ public class CharacterGen extends Item implements NamedScreenHandlerFactory {
         this.characteristic = arkData[number][3];
         this.quality = Integer.parseInt(arkData[number][4]);
         this.image = identifier.getImage();
+        getMaxChargingTimes(1);
+    }
+    public void getMaxChargingTimes(int count){
+        if(this.attackTrigger){
+            this.maxChargingTimes = 0;
+        }else this.maxChargingTimes = count;
     }
 
     @Override
@@ -101,10 +108,18 @@ public class CharacterGen extends Item implements NamedScreenHandlerFactory {
             if(stack.getNbt().getInt("skillTick") > 0){
                 return (Text.literal("持续时间: ").formatted(Formatting.DARK_AQUA))
                         .append(Text.literal(String.valueOf(stack.getNbt().getInt("skillTick")/20)).formatted(Formatting.AQUA));
-            }
-                return (Text.literal(stack.getNbt().getInt("characterTick")/20+"SP").formatted(Formatting.GOLD))
+            } else if (attackTrigger) {
+                return (Text.literal(stack.getNbt().getInt("characterTick")+"sp").formatted(Formatting.GOLD))
                         .append(Text.literal(" / ").formatted(Formatting.GREEN))
-                        .append(Text.literal(triggerTime/20+"SP").formatted(Formatting.GOLD))
+                        .append(Text.literal(triggerTime+"sp").formatted(Formatting.GOLD))
+                        .append(Text.literal("  |  ").formatted(Formatting.DARK_AQUA))
+                        .append(Text.literal("充能: ").formatted(Formatting.YELLOW))
+                        .append(Text.literal(String.valueOf(stack.getNbt().getInt("canUseTimes"))).formatted(Formatting.YELLOW))
+                        .append(Text.literal(" / "+this.maxChargingTimes).formatted(Formatting.YELLOW));
+            }
+            return (Text.literal(stack.getNbt().getInt("characterTick")/20+"sp").formatted(Formatting.GOLD))
+                        .append(Text.literal(" / ").formatted(Formatting.GREEN))
+                        .append(Text.literal(triggerTime/20+"sp").formatted(Formatting.GOLD))
                         .append(Text.literal("  |  ").formatted(Formatting.DARK_AQUA))
                         .append(Text.literal("充能: ").formatted(Formatting.YELLOW))
                         .append(Text.literal(String.valueOf(stack.getNbt().getInt("canUseTimes"))).formatted(Formatting.YELLOW))
@@ -122,11 +137,13 @@ public class CharacterGen extends Item implements NamedScreenHandlerFactory {
             }else {
                 if(stack.getNbt().getInt("skillTick") == 0) {
                     resetSkillEffect(entity);
-                    if(this.auto){
+                    if(this.auto && !attackTrigger){
                         if (ct >= triggerTime) {
                             stack.getNbt().putInt("characterTick", 0);
                             triggerSkill(stack, world, (LivingEntity) entity);
                         }
+                    } else if (attackTrigger){
+                        triggerSkill(stack, world, (LivingEntity) entity);
                     }
                 }else {
                     stack.getNbt().putInt("skillTick",stack.getNbt().getInt("skillTick") - 1);
@@ -138,12 +155,14 @@ public class CharacterGen extends Item implements NamedScreenHandlerFactory {
     public void resetSkillEffect(Entity entity){
     }
     public void updateTick(ItemStack stack){
-        if(stack.getNbt().getInt("canUseTimes") < this.maxChargingTimes && stack.getNbt().getInt("skillTick") == 0) {
-            if (stack.getNbt().getInt("characterTick") < this.triggerTime) {
-                stack.getNbt().putInt("characterTick", stack.getNbt().getInt("characterTick") + 1);
-            } else {
-                stack.getNbt().putInt("canUseTimes", stack.getNbt().getInt("canUseTimes") + 1);
-                stack.getNbt().putInt("characterTick", 0);
+        if(!attackTrigger) {
+            if (stack.getNbt().getInt("canUseTimes") < this.maxChargingTimes && stack.getNbt().getInt("skillTick") == 0) {
+                if (stack.getNbt().getInt("characterTick") < this.triggerTime) {
+                    stack.getNbt().putInt("characterTick", stack.getNbt().getInt("characterTick") + 1);
+                } else {
+                    stack.getNbt().putInt("canUseTimes", stack.getNbt().getInt("canUseTimes") + 1);
+                    stack.getNbt().putInt("characterTick", 0);
+                }
             }
         }
     }

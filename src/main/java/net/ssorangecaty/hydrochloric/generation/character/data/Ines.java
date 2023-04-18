@@ -29,13 +29,14 @@ public class Ines extends CharacterGen {
         this.triggerTime = 45*20;
         this.auto = false;
         this.simpleSkillInfo = "技能开启时获得隐身与力量并在攻击时虚弱敌方";
-        this.skillInfo= new String[]{"手动开启,45SP,持续时间12s,技能开启时获得隐身II与力量II", "并在攻击敌方时对其施加虚弱(虚弱等级随攻击次数计算)"};
+        this.skillInfo= new String[]{"手动开启,"+triggerTime/20+"sp"+"持续时间12s,技能开启时获得隐身II与力量II", "并在攻击敌方时对其施加虚弱(虚弱等级随攻击次数计算)","虚弱持续时间无限"};
+
     }
     @Override
     public void triggerSkill(ItemStack stack, World world, LivingEntity entity){
         if(!world.isClient()) {
-            entity.setStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 1,true,true,true),entity);
-            entity.setStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 1,true,true,true),entity);
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 1,true,true,true),entity);
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 1,true,true,true),entity);
             ((EntityGameDataSaver) entity).getGameInfo().putBoolean("inesSkill", true);
         }
     }
