@@ -4,16 +4,16 @@
   "package": "net.ssorangecaty.hydrochloric.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityMixin",
-    "FoodItemMixin",
-    "HudInGameMixin",
+    "HydrochloricEntityMixin",
+    "HydrochloricFoodItemMixin",
+    "HydrochloricHudInGameMixin",
     "ItemAccessor",
-    "LivingEntityMixin",
-    "ModEntityGameDataSavingServerMixin",
-    "SyncTickMixin"
+    "HydrochloricLivingEntityMixin",
+    "HydrochloricEntityDataSavingServerMixin",
+    "HydrochloricSyncTickMixin"
   ],
   "client": [
-    "TitleScreenMixin"
+    "HydrochloricTitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

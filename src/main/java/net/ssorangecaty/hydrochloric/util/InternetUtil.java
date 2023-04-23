@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.ssorangecaty.hydrochloric.Mod;
+import net.ssorangecaty.hydrochloric.Hydrochloric;
 
 
 import java.io.BufferedReader;
@@ -38,7 +38,7 @@ public class InternetUtil {
         JsonArray lives = rootObject.getAsJsonArray("lives");
         JsonObject weatherInfo = lives.get(0).getAsJsonObject();
         String weather = weatherInfo.get("weather").getAsString();
-        Mod.LOGGER.info("通过橘子的API访问到了当前存档绑定城市的天气"+city+"的天气为 "+weather);
+        Hydrochloric.LOGGER.info("通过橘子的API访问到了当前存档绑定城市的天气"+city+"的天气为 "+weather);
         return weather;
     }
 

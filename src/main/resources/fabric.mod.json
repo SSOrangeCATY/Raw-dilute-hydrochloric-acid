@@ -19,13 +19,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.ssorangecaty.hydrochloric.Mod"
+      "net.ssorangecaty.hydrochloric.Hydrochloric"
     ],
     "client": [
-      "net.ssorangecaty.hydrochloric.ModClient"
+      "net.ssorangecaty.hydrochloric.HydrochloricClient"
     ],
     "fabric-datagen": [
-      "net.ssorangecaty.hydrochloric.datagen.ModDataGeneration"
+      "net.ssorangecaty.hydrochloric.datagen.HydrochloricDataGeneration"
     ]
   },
   "mixins": [

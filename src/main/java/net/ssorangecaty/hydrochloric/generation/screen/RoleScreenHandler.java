@@ -3,15 +3,16 @@ package net.ssorangecaty.hydrochloric.generation.screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
-import net.ssorangecaty.hydrochloric.generation.character.CharacterGen;
+import net.ssorangecaty.hydrochloric.generation.item.character.CharacterGen;
 
 
 public class RoleScreenHandler extends ScreenHandler {
-    private CharacterGen character;
-    public RoleScreenHandler(int synId, PlayerInventory inventory){
-        super(ScreenRegister.ROLE_SCREEN_HANDLER,synId);
-        character = ((CharacterGen)inventory.player.getMainHandStack().getItem());
+    private final CharacterGen CHARACTER;
+    public RoleScreenHandler(int i, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
+        super(ScreenRegister.ROLE_SCREEN_HANDLER,i);
+        CHARACTER = ((CharacterGen)playerInventory.player.getMainHandStack().getItem());
     }
 
     @Override
@@ -19,7 +20,7 @@ public class RoleScreenHandler extends ScreenHandler {
         return null;
     }
     public CharacterGen getCharacter(){
-        return this.character;
+        return this.CHARACTER;
     }
     @Override
     public boolean canUse(PlayerEntity player) {

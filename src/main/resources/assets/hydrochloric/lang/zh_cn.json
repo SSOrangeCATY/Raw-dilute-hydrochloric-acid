@@ -1,12 +1,21 @@
 {
   "itemGroup.hydrochloric.item_group" : "生息演算",
   "menu.hydrochloric" : "生息演算",
+  "item.hydrochloric.consumables" : "消耗品",
+
   "item.hydrochloric.ines" : "伊内丝 ★★★★★★",
-  "item.hydrochloric.amiya" : "阿米娅 ★★★★★"
+  "item.hydrochloric.amiya" : "阿米娅 ★★★★★",
+  "item.hydrochloric.kkdy" : "克洛丝 ★★★",
 
-
-
-
+  "item.hydrochloric.origin_stone" : "至纯源石",
+  "item.hydrochloric.origin_stone.tips" : "在工业中用量巨大的源石结晶，但有着较高的提取难度。",
+  "item.hydrochloric.origin_stone.tips1" : "是世界的主要能源类精加工产物，同时也是几乎所有源石技艺得以施展的根本。",
+  "item.hydrochloric.longmen_coin" : "龙门币",
+  "item.hydrochloric.longmen_coin.tips" : "经济危机发生后，经济的衰退与政权之间的对立让贸易参与者们举步维艰。",
+  "item.hydrochloric.longmen_coin.tips1" : "龙门币的流通使商业复兴成为可能。",
+  "item.hydrochloric.synthetic_jade" : "合成玉",
+  "item.hydrochloric.synthetic_jade.tips" : "由至纯源石加工而来，混合了其他矿物以后的源石产物。",
+  "item.hydrochloric.synthetic_jade.tips1" : "以前仅能当作一些传导元件使用，现在却逐渐成为人事交互关系中令人信服的象征物。"
 
 
 

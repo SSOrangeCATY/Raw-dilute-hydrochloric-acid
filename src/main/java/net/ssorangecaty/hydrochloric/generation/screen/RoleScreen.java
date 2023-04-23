@@ -1,18 +1,24 @@
 package net.ssorangecaty.hydrochloric.generation.screen;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.x150.renderer.font.FontRenderer;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.texture.AbstractTexture;
+import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.ssorangecaty.hydrochloric.generation.character.CharacterGen;
-import net.ssorangecaty.hydrochloric.network.data.ModEvents;
+import net.ssorangecaty.hydrochloric.generation.item.character.CharacterGen;
+import net.ssorangecaty.hydrochloric.network.data.HydrochloricEvents;
 import net.ssorangecaty.hydrochloric.util.ArkData;
 import org.joml.Quaternionf;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import java.awt.*;
 import java.io.IOException;
@@ -48,7 +54,7 @@ public class RoleScreen extends HandledScreen<RoleScreenHandler>{
     }
     @Override
     public void close() {
-        this.client.getSoundManager().stopSounds(ModEvents.MIZUKI_MUSIC1, SoundCategory.PLAYERS);
+        this.client.getSoundManager().stopSounds(HydrochloricEvents.MIZUKI_MUSIC1, SoundCategory.PLAYERS);
         this.client.setScreen((Screen)null);
     }
 
@@ -62,21 +68,27 @@ public class RoleScreen extends HandledScreen<RoleScreenHandler>{
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
     }
     protected void drawRoleImage(MatrixStack matrices){
-        if(role.quality > 3){
-            RenderSystem.setShaderTexture(0,role.image);
-            int x = 0;
-            float imageHeight = (float) ((float) this.height / 1.5);
-            float imageWidth = this.width;
-            int size = (int) (this.height * 2.5);
-            drawTexture(matrices, x, 0, 95, imageHeight, (int) imageWidth, this.height, size, size);
-        }else{
-            RenderSystem.setShaderTexture(0,role.image);
-            int x = this.width/2 - 50;
-            float imageHeight = 0;
-            float imageWidth = this.width;
-            int size = (int) (this.height * 1.5);
-            drawTexture(matrices, x, 0, 95, imageHeight, (int) imageWidth, this.height, size, size);
+        matrices.push();
+        RenderSystem.setShaderTexture(0,role.image);
+        MinecraftClient mc = MinecraftClient.getInstance();
+        TextureManager textureManager = mc.getTextureManager();
+        AbstractTexture texture = textureManager.getTexture(role.image);
+        int textureId = texture.getGlId();
+        GlStateManager._bindTexture(textureId);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
+        float centerX = this.width / 2.0f;
+        float centerY = this.height / 2.0f;
+        matrices.translate(centerX, centerY, 0);
+        if(role.quality > 4){
+            matrices.scale(2.5F,2.5F,0);
+        }else {
+            matrices.scale(1F,1F,0);
         }
+        matrices.translate(-centerX, -centerY, 0);
+        int x = this.width/2 - this.width/4;
+        drawTexture(matrices, x, 0, 0, 0, this.width, this.height, this.height, this.height);
+        matrices.pop();
     }
     protected void drawTextElements(MatrixStack matrices){
         float tHeight = (float) (this.height- (float) this.height /3.75);

@@ -27,13 +27,6 @@ javaArray += '\n};';
 console.log(javaArray);
 用这个在prts.wiki获取数据 爽飞了！*/
 
-import me.x150.renderer.font.FontRenderer;
-import net.ssorangecaty.hydrochloric.ModClient;
-
-import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class ArkData {
     public static final String[][] sixStar = new String[][] {
             {"能天使", "Exusiai", "远程位女性干员输出", "优先攻击空中单位", "6"},
