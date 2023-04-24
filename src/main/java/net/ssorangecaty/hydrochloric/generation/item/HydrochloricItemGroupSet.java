@@ -25,6 +25,7 @@ public class HydrochloricItemGroupSet {
                     entries.add(HydrochloricItemRegister.ADVANCED_VOUCHER);
                     entries.add(HydrochloricItemRegister.NORMAL_VOUCHER);
                     entries.add(HydrochloricItemRegister.PRTS_TERMINAL);
+                    entries.add(HydrochloricItemRegister.NORMAL_EXP_CARD);
                 })
                 .build();
     }

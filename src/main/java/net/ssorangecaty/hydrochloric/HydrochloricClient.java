@@ -12,7 +12,7 @@ import net.ssorangecaty.hydrochloric.generation.item.character.CharacterGen;
 import net.ssorangecaty.hydrochloric.generation.item.HydrochloricItemGeneration;
 import net.ssorangecaty.hydrochloric.generation.screen.PrtsScreen;
 import net.ssorangecaty.hydrochloric.generation.screen.RoleScreen;
-import net.ssorangecaty.hydrochloric.generation.screen.ScreenRegister;
+import net.ssorangecaty.hydrochloric.generation.screen.HydrochloricScreenRegister;
 import net.ssorangecaty.hydrochloric.generation.screen.SearchVoucherScreen;
 import org.lwjgl.glfw.GLFW;
 
@@ -20,9 +20,9 @@ import org.lwjgl.glfw.GLFW;
 public class HydrochloricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        HandledScreens.register(ScreenRegister.ROLE_SCREEN_HANDLER, RoleScreen::new);
-        HandledScreens.register(ScreenRegister.SEARCH_VOUCHER_SCREEN_HANDLER, SearchVoucherScreen::new);
-        HandledScreens.register(ScreenRegister.PRTS_SCREEN_HANDLER, PrtsScreen::new);
+        HandledScreens.register(HydrochloricScreenRegister.ROLE_SCREEN_HANDLER, RoleScreen::new);
+        HandledScreens.register(HydrochloricScreenRegister.SEARCH_VOUCHER_SCREEN_HANDLER, SearchVoucherScreen::new);
+        HandledScreens.register(HydrochloricScreenRegister.PRTS_SCREEN_HANDLER, PrtsScreen::new);
 
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_LEFT_SHIFT)) {

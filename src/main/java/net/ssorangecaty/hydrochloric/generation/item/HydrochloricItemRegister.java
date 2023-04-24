@@ -30,6 +30,7 @@ public class HydrochloricItemRegister {
     public static final Item SEARCH_VOUCHER_X10 = new SearchVoucherX10(COMMON64,"search_voucher_x10","consumables").registerItem();
     public static final Item ADVANCED_VOUCHER = new HydrochloricItemGeneration(COMMON64,"advanced_voucher","consumables").registerItem();
     public static final Item NORMAL_VOUCHER = new HydrochloricItemGeneration(COMMON64,"normal_voucher","consumables").registerItem();
+    public static final Item NORMAL_EXP_CARD = new ExpVideoCardGeneration(COMMON64,"normal_exp_card","consumables",1).registerItem();
 
 
     public static void registerModItems() {

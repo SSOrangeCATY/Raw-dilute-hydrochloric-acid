@@ -7,7 +7,7 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.ssorangecaty.hydrochloric.Hydrochloric;
 
-public class ScreenRegister {
+public class HydrochloricScreenRegister {
     public static final ScreenHandlerType<RoleScreenHandler> ROLE_SCREEN_HANDLER = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Hydrochloric.MOD_ID, "role_screen_handler"), new ExtendedScreenHandlerType<>(RoleScreenHandler::new));
     public static final ScreenHandlerType<PrtsScreenHandler> PRTS_SCREEN_HANDLER = Registry.register(Registries.SCREEN_HANDLER, new Identifier(Hydrochloric.MOD_ID, "prts_screen_handler"), new ExtendedScreenHandlerType<>(PrtsScreenHandler::new));
 

@@ -11,7 +11,7 @@ import net.ssorangecaty.hydrochloric.generation.item.character.CharacterGen;
 public class RoleScreenHandler extends ScreenHandler {
     private final CharacterGen CHARACTER;
     public RoleScreenHandler(int i, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
-        super(ScreenRegister.ROLE_SCREEN_HANDLER,i);
+        super(HydrochloricScreenRegister.ROLE_SCREEN_HANDLER,i);
         CHARACTER = ((CharacterGen)playerInventory.player.getMainHandStack().getItem());
     }
 
